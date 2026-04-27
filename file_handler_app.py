@@ -176,3 +176,28 @@ class FileHandlerApp:
         """Notify the user of an invalid menu selection."""
         print("\nInvalid choice. Please select a valid option.\n")
         input("Press Enter to continue...")
+        
+    def run(self) -> None:
+        """Start the main application loop."""
+        while self.is_running:
+            self._clear_screen()
+            self._print_banner()
+            self._print_menu()
+
+            choice = self._get_menu_choice()
+            action = self.menu_options.get(choice)
+
+            if action:
+                action()
+            else:
+                self._handle_invalid_choice()
+
+
+def main() -> None:
+    """Application entry point."""
+    app = FileHandlerApp()
+    app.run()
+
+
+if __name__ == "__main__":
+    main()
