@@ -73,3 +73,21 @@ class IntegerTransformer(FileHandler):
             "triple.txt",
             [str(num) for num in self.odd_cubes]
         )
+        
+    def display_result(self) -> None:
+        """Display the transformation results to the console."""
+        self._print_header("INTEGER TRANSFORMATION RESULTS")
+        print(f"Total integers processed: "
+              f"{len(self.even_squares) + len(self.odd_cubes)}")
+
+        print(f"\nEven numbers -> Squares:")
+        print(f"  Count: {len(self.even_squares)}")
+        print(f"  Output: {self.double_output_path}")
+        print(f"  Values: {self.even_squares}")
+
+        print(f"\nOdd numbers -> Cubes:")
+        print(f"  Count: {len(self.odd_cubes)}")
+        print(f"  Output: {self.triple_output_path}")
+        print(f"  Values: {self.odd_cubes}")
+
+        print("=" * 50 + "\n")
