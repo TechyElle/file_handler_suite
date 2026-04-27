@@ -55,3 +55,21 @@ class IntegerTransformer(FileHandler):
         even_squares = [num ** 2 for num in numbers if num % 2 == 0]
         odd_cubes = [num ** 3 for num in numbers if num % 2 != 0]
         return even_squares, odd_cubes
+        
+    def process(self) -> None:
+        """Execute the integer transformation workflow."""
+        raw_lines = self.read_all_lines()
+        all_numbers = self._parse_integers(raw_lines)
+
+        self.even_squares, self.odd_cubes = self._transform_numbers(
+            all_numbers
+        )
+
+        self.double_output_path = self.write_lines(
+            "double.txt",
+            [str(num) for num in self.even_squares]
+        )
+        self.triple_output_path = self.write_lines(
+            "triple.txt",
+            [str(num) for num in self.odd_cubes]
+        )
