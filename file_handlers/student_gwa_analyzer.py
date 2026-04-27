@@ -94,3 +94,9 @@ class StudentGwaAnalyzer(FileHandler):
             self.student_records,
             key=lambda record: record.gwa
         )
+        
+        def process(self) -> None:
+        """Execute the GWA analysis workflow."""
+        raw_lines = self.read_all_lines()
+        self.student_records = self._parse_records(raw_lines)
+        self.top_student = self._find_top_student()
