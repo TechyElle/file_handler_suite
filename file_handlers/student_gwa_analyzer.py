@@ -81,3 +81,16 @@ class StudentGwaAnalyzer(FileHandler):
             else:
                 print(f"Warning: Malformed line '{line}'")
         return records
+        
+        def _find_top_student(self) -> Optional[StudentRecord]:
+        """Find the student with the best (lowest numeric) GWA.
+
+        Returns:
+            The StudentRecord with the lowest GWA value, or None if no records.
+        """
+        if not self.student_records:
+            return None
+        return min(
+            self.student_records,
+            key=lambda record: record.gwa
+        )
