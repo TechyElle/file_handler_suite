@@ -100,3 +100,20 @@ class StudentGwaAnalyzer(FileHandler):
         raw_lines = self.read_all_lines()
         self.student_records = self._parse_records(raw_lines)
         self.top_student = self._find_top_student()
+        
+        def display_result(self) -> None:
+        """Display the analysis results to the console."""
+        self._print_header("STUDENT GWA ANALYSIS RESULTS")
+        print(f"Total students processed: {len(self.student_records)}")
+
+        if self.top_student:
+            print(f"\nTop Performer:")
+            print(f"  Name: {self.top_student.full_name}")
+            print(f"  GWA:  {self.top_student.gwa:.2f}")
+        else:
+            print("\nNo valid student records found.")
+
+        print("\nAll Records:")
+        for record in sorted(self.student_records, key=lambda r: r.gwa):
+            print(f"  {record.gwa:.2f} - {record.full_name}")
+        print("=" * 50 + "\n")
