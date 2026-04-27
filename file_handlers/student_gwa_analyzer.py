@@ -56,3 +56,28 @@ class StudentGwaAnalyzer(FileHandler):
         super().__init__(source_file_path, output_directory)
         self.student_records: List[StudentRecord] = []
         self.top_student: Optional[StudentRecord] = None
+        
+        def _parse_records(self, lines: List[str]) -> List[StudentRecord]:
+        """Parse raw lines into StudentRecord objects.
+
+        Expected format per line: 'Full Name,GWA'
+
+        Args:
+            lines: Raw lines from the source file.
+
+        Returns:
+            A list of valid StudentRecord objects.
+        """
+        records = []
+        for line in lines:
+            parts = line.split(",", maxsplit=1)
+            if len(parts) == 2:
+                name = parts[0].strip()
+                try:
+                    gwa = float(parts[1].strip())
+                    records.append(StudentRecord(name, gwa))
+                except ValueError:
+                    print(f"Warning: Invalid GWA in line '{line}'")
+            else:
+                print(f"Warning: Malformed line '{line}'")
+        return records
