@@ -68,3 +68,16 @@ class NumberSeparator(FileHandler):
             "odd.txt",
             [str(num) for num in self.odd_numbers]
         )
+        
+    def display_result(self) -> None:
+        """Display the separation results to the console."""
+        self._print_header("NUMBER SEPARATION RESULTS")
+        print(f"Total integers processed: "
+              f"{len(self.even_numbers) + len(self.odd_numbers)}")
+        print(f"Even numbers found: {len(self.even_numbers)}")
+        print(f"  -> Saved to: {self.even_output_path}")
+        print(f"  -> Values: {self.even_numbers}")
+        print(f"Odd numbers found: {len(self.odd_numbers)}")
+        print(f"  -> Saved to: {self.odd_output_path}")
+        print(f"  -> Values: {self.odd_numbers}")
+        print("=" * 50 + "\n")
