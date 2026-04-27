@@ -1,0 +1,10 @@
+Alice, 1.25
+Bob, 2.50
+Carol, 1.50
+David, 3.00
+Eve, 1.75
+Frank, 1.00
+Grace, 2.25
+Henry, 1.80
+Isla, 2.75
+Jake, 1.10
