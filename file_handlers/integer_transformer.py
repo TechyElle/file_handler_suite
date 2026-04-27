@@ -39,3 +39,19 @@ class IntegerTransformer(FileHandler):
         self.odd_cubes: List[int] = []
         self.double_output_path: str = ""
         self.triple_output_path: str = ""
+        
+    def _transform_numbers(
+        self,
+        numbers: List[int]
+    ) -> Tuple[List[int], List[int]]:
+        """Compute squares for evens and cubes for odds.
+
+        Args:
+            numbers: List of integers to transform.
+
+        Returns:
+            Tuple of (even_squares, odd_cubes).
+        """
+        even_squares = [num ** 2 for num in numbers if num % 2 == 0]
+        odd_cubes = [num ** 3 for num in numbers if num % 2 != 0]
+        return even_squares, odd_cubes
