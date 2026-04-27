@@ -36,3 +36,16 @@ class NumberSeparator(FileHandler):
         self.odd_numbers: List[int] = []
         self.even_output_path: str = ""
         self.odd_output_path: str = ""
+        
+    def _classify_numbers(self, numbers: List[int]) -> Tuple[List[int], List[int]]:
+        """Split numbers into even and odd lists.
+
+        Args:
+            numbers: List of integers to classify.
+
+        Returns:
+            Tuple of (even_numbers, odd_numbers).
+        """
+        even = [num for num in numbers if num % 2 == 0]
+        odd = [num for num in numbers if num % 2 != 0]
+        return even, odd
