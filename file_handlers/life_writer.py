@@ -53,3 +53,24 @@ class LifeWriter(FileHandler):
             if choice in ("n", "no"):
                 return False
             print("Please enter 'y' or 'n'.")
+            
+    def process(self) -> None:
+        """Execute the interactive line collection workflow.
+
+        Continuously prompts for lines until the user chooses to stop,
+        then writes all lines to mylife.txt.
+        """
+        print("\nWelcome to Life Writer!")
+        print("Enter text lines to save to mylife.txt\n")
+
+        while True:
+            line = self._get_user_input()
+            self.collected_lines.append(line)
+
+            if not self._ask_continue():
+                break
+
+        self.output_file_path = self.write_lines(
+            "mylife.txt",
+            self.collected_lines
+        )
