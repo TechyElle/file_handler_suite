@@ -31,3 +31,25 @@ class LifeWriter(FileHandler):
         super().__init__("", output_directory)
         self.collected_lines: List[str] = []
         self.output_file_path: str = ""
+        
+    def _get_user_input(self) -> str:
+        """Prompt the user for a single line of text.
+
+        Returns:
+            The user's input string.
+        """
+        return input("Enter line: ")
+
+    def _ask_continue(self) -> bool:
+        """Ask if the user wants to add more lines.
+
+        Returns:
+            True if the user wants to continue, False otherwise.
+        """
+        while True:
+            choice = input("Are there more lines y/n? ").strip().lower()
+            if choice in ("y", "yes"):
+                return True
+            if choice in ("n", "no"):
+                return False
+            print("Please enter 'y' or 'n'.")
