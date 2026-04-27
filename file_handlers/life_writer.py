@@ -74,3 +74,13 @@ class LifeWriter(FileHandler):
             "mylife.txt",
             self.collected_lines
         )
+        
+    def display_result(self) -> None:
+        """Display the writing results to the console."""
+        self._print_header("LIFE WRITER RESULTS")
+        print(f"Total lines written: {len(self.collected_lines)}")
+        print(f"Output file: {self.output_file_path}")
+        print("\nContent:")
+        for index, line in enumerate(self.collected_lines, 1):
+            print(f"  {index}: {line}")
+        print("=" * 50 + "\n")
