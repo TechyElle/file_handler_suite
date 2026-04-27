@@ -8,6 +8,7 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import List, Optional
 
+    
 class FileHandler(ABC):
     """Abstract base class for all file handling operations.
 
@@ -28,8 +29,10 @@ class FileHandler(ABC):
             output_directory: Optional directory for output files.
                               Defaults to current directory if None.
         """
+        self.source_path = Path(source_file_path)
+        self.output_dir = Path(output_directory or ".")
 
-        def read_all_lines(self) -> List[str]:
+    def read_all_lines(self) -> List[str]:
         """Read all lines from the source file.
 
         Returns:
@@ -48,5 +51,20 @@ class FileHandler(ABC):
         except PermissionError:
             print(f"Error: Permission denied for '{self.source_path}'.")
             raise
-        self.source_path = Path(source_file_path)
-        self.output_dir = Path(output_directory or ".")
+
+    def write_lines(self, file_name: str, lines: List[str]) -> str:
+        """Write a list of lines to a file in the output directory.
+
+        Args:
+            file_name: Name of the output file.
+            lines: List of strings to write.
+
+        Returns:
+            The full path to the written file as a string.
+        """
+        full_path = self.output_dir / file_name
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+        with full_path.open("w", encoding="utf-8") as file:
+            for line in lines:
+                file.write(f"{line}\n")
+        return str(full_path)
