@@ -8,3 +8,13 @@ Grace, 2.25
 Henry, 1.80
 Isla, 2.75
 Jake, 1.10
+Kate, 1.40
+Leo, 2.10
+Mia, 1.90
+Noah, 2.80
+Olivia, 1.20
+Paul, 2.60
+Quinn, 1.60
+Rose, 2.00
+Sam, 2.40
+Tina, 1.30
