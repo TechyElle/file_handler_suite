@@ -68,7 +68,7 @@ class FileHandler(ABC):
             for line in lines:
                 file.write(f"{line}\n")
         return str(full_path)
-        
+
     def _parse_integers(self, lines: List[str]) -> List[int]:
         """Convert string lines to integers, skipping invalid entries.
 
@@ -95,3 +95,19 @@ class FileHandler(ABC):
         print("\n" + "=" * 50)
         print(title.upper())
         print("=" * 50)
+
+    @abstractmethod
+    def process(self) -> None:
+        """Execute the main processing logic.
+
+        Must be implemented by all subclasses.
+        """
+        pass
+
+    @abstractmethod
+    def display_result(self) -> None:
+        """Display the processing result to the user.
+
+        Must be implemented by all subclasses.
+        """
+        pass
