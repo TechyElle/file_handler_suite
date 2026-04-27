@@ -146,3 +146,33 @@ class FileHandlerApp:
             "Source: integers.txt -> double.txt & triple.txt",
             lambda: IntegerTransformer("integers.txt")
         )
+        
+    def _show_about(self) -> None:
+        """Display information about the application."""
+        about_text = """
+        ┌─────────────────────────────────────────────────┐
+        │  ABOUT THIS APPLICATION                         │
+        ├─────────────────────────────────────────────────┤
+        │  Course: CMPE 103 - Module 2                    │
+        │  Topic:  File Handling in Python                │
+        │  Style:  Object-Oriented Programming            │
+        ├─────────────────────────────────────────────────┤
+        │  Coding Standard:                               │
+        │  • Descriptive names (snake_case / PascalCase)  │
+        │  • PEP-8 compliant line lengths                 │
+        │  • Abstract base classes & inheritance          │
+        │  • Encapsulation & error handling               │
+        └─────────────────────────────────────────────────┘
+        """
+        print(about_text)
+        input("Press Enter to return to the menu...")
+
+    def _exit_application(self) -> None:
+        """Terminate the application gracefully."""
+        print("\nThank you for using File Handler App. Goodbye!\n")
+        self.is_running = False
+
+    def _handle_invalid_choice(self) -> None:
+        """Notify the user of an invalid menu selection."""
+        print("\nInvalid choice. Please select a valid option.\n")
+        input("Press Enter to continue...")
