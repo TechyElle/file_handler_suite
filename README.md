@@ -37,10 +37,6 @@ Select an option from the menu:
 - `[5]` About
 - `[0]` Exit
 
-## Building From Scratch
-
-See [BUILD_FROM_SCRATCH.md](BUILD_FROM_SCRATCH.md) for a step-by-step guide that maps each Git commit to the incremental development process. This shows exactly how the project was built from an empty repository to the complete application.
-
 ## File Structure
 
 | File | Description |
@@ -65,7 +61,5 @@ Running the exercises generates:
 
 ## Commit History
 
-This repository was built incrementally with 10+ commits showing the progression from repository setup → data preparation → base class → individual problems → menu integration → documentation.
-
-Each commit represents a logical step in building the project from scratch. See `BUILD_FROM_SCRATCH.md` for the detailed mapping.
+This repository was built incrementally with 40+ commits showing the progression from repository setup → data preparation → base class → individual problems → menu integration → documentation.
 
