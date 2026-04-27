@@ -8,6 +8,7 @@ from typing import List, Tuple, Optional
 
 from file_handler_base import FileHandler
 
+
 class StudentRecord:
     """Represents a single student's academic record.
 
@@ -29,6 +30,7 @@ class StudentRecord:
     def __repr__(self) -> str:
         """Return a string representation of the record."""
         return f"StudentRecord(name='{self.full_name}', gwa={self.gwa})"
+
 
 class StudentGwaAnalyzer(FileHandler):
     """Analyze student GWA records to find the top performer.
@@ -56,8 +58,8 @@ class StudentGwaAnalyzer(FileHandler):
         super().__init__(source_file_path, output_directory)
         self.student_records: List[StudentRecord] = []
         self.top_student: Optional[StudentRecord] = None
-        
-        def _parse_records(self, lines: List[str]) -> List[StudentRecord]:
+
+    def _parse_records(self, lines: List[str]) -> List[StudentRecord]:
         """Parse raw lines into StudentRecord objects.
 
         Expected format per line: 'Full Name,GWA'
@@ -81,8 +83,8 @@ class StudentGwaAnalyzer(FileHandler):
             else:
                 print(f"Warning: Malformed line '{line}'")
         return records
-        
-        def _find_top_student(self) -> Optional[StudentRecord]:
+
+    def _find_top_student(self) -> Optional[StudentRecord]:
         """Find the student with the best (lowest numeric) GWA.
 
         Returns:
@@ -94,14 +96,14 @@ class StudentGwaAnalyzer(FileHandler):
             self.student_records,
             key=lambda record: record.gwa
         )
-        
-        def process(self) -> None:
+
+    def process(self) -> None:
         """Execute the GWA analysis workflow."""
         raw_lines = self.read_all_lines()
         self.student_records = self._parse_records(raw_lines)
         self.top_student = self._find_top_student()
-        
-        def display_result(self) -> None:
+
+    def display_result(self) -> None:
         """Display the analysis results to the console."""
         self._print_header("STUDENT GWA ANALYSIS RESULTS")
         print(f"Total students processed: {len(self.student_records)}")
@@ -117,3 +119,4 @@ class StudentGwaAnalyzer(FileHandler):
         for record in sorted(self.student_records, key=lambda r: r.gwa):
             print(f"  {record.gwa:.2f} - {record.full_name}")
         print("=" * 50 + "\n")
+
