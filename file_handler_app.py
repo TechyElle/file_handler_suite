@@ -37,3 +37,44 @@ class FileHandlerApp:
             "5": self._show_about,
             "0": self._exit_application,
         }
+        
+    def _clear_screen(self) -> None:
+        """Clear the terminal screen for better readability."""
+        os.system("cls" if os.name == "nt" else "clear")
+
+    def _print_banner(self) -> None:
+        """Display the application welcome banner."""
+        banner = """
+        ╔═══════════════════════════════════════════════════╗
+        ║                                                   ║
+        ║     CMPE 103 - FILE HANDLING WITH PYTHON          ║
+        ║          Object-Oriented Edition                  ║
+        ║                                                   ║
+        ╚═══════════════════════════════════════════════════╝
+        """
+        print(banner)
+
+    def _print_menu(self) -> None:
+        """Display the main menu options."""
+        menu = """
+        ┌─────────────────────────────────────────────────┐
+        │  SELECT AN ACTIVITY:                            │
+        ├─────────────────────────────────────────────────┤
+        │  [1] Separate Even & Odd Numbers   (P-1)        │
+        │  [2] Find Top Student by GWA       (P-2)        │
+        │  [3] Interactive Life Writer       (P-3)        │
+        │  [4] Square Evens & Cube Odds      (P-4)        │
+        ├─────────────────────────────────────────────────┤
+        │  [5] About This Application                     │
+        │  [0] Exit                                       │
+        └─────────────────────────────────────────────────┘
+        """
+        print(menu)
+
+    def _get_menu_choice(self) -> str:
+        """Prompt the user for a menu selection.
+
+        Returns:
+            The user's menu choice as a string.
+        """
+        return input("Enter your choice: ").strip()
