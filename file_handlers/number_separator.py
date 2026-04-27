@@ -49,3 +49,22 @@ class NumberSeparator(FileHandler):
         even = [num for num in numbers if num % 2 == 0]
         odd = [num for num in numbers if num % 2 != 0]
         return even, odd
+        
+    def process(self) -> None:
+        """Execute the number separation workflow.
+
+        Reads integers, classifies them, and writes to output files.
+        """
+        raw_lines = self.read_all_lines()
+        all_numbers = self._parse_integers(raw_lines)
+        self.even_numbers, self.odd_numbers = self._classify_numbers(
+            all_numbers
+        )
+        self.even_output_path = self.write_lines(
+            "even.txt",
+            [str(num) for num in self.even_numbers]
+        )
+        self.odd_output_path = self.write_lines(
+            "odd.txt",
+            [str(num) for num in self.odd_numbers]
+        )
