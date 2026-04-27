@@ -114,3 +114,35 @@ class FileHandlerApp:
             print(f"\nFailed to initialize or run activity: {error}\n")
 
         input("Press Enter to return to the menu...")
+        
+    def _run_number_separator(self) -> None:
+        """Execute Problem P-1: Number Separation."""
+        self._run_activity(
+            "Number Separator (P-1)",
+            "Source: numbers.txt -> even.txt & odd.txt",
+            lambda: NumberSeparator("numbers.txt")
+        )
+
+    def _run_gwa_analyzer(self) -> None:
+        """Execute Problem P-2: GWA Analysis."""
+        self._run_activity(
+            "Student GWA Analyzer (P-2)",
+            "Source: students_gwa.txt",
+            lambda: StudentGwaAnalyzer("students_gwa.txt")
+        )
+
+    def _run_life_writer(self) -> None:
+        """Execute Problem P-3: Interactive Life Writer."""
+        self._run_activity(
+            "Life Writer (P-3)",
+            "Output: mylife.txt",
+            lambda: LifeWriter()
+        )
+
+    def _run_integer_transformer(self) -> None:
+        """Execute Problem P-4: Integer Transformation."""
+        self._run_activity(
+            "Integer Transformer (P-4)",
+            "Source: integers.txt -> double.txt & triple.txt",
+            lambda: IntegerTransformer("integers.txt")
+        )
