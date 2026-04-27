@@ -68,3 +68,30 @@ class FileHandler(ABC):
             for line in lines:
                 file.write(f"{line}\n")
         return str(full_path)
+        
+    def _parse_integers(self, lines: List[str]) -> List[int]:
+        """Convert string lines to integers, skipping invalid entries.
+
+        Args:
+            lines: Raw lines from the source file.
+
+        Returns:
+            A list of valid integers.
+        """
+        valid_integers = []
+        for line in lines:
+            try:
+                valid_integers.append(int(line))
+            except ValueError:
+                print(f"Warning: Skipping non-integer value '{line}'")
+        return valid_integers
+
+    def _print_header(self, title: str) -> None:
+        """Print a formatted header for the results display.
+
+        Args:
+            title: The title to display in the header.
+        """
+        print("\n" + "=" * 50)
+        print(title.upper())
+        print("=" * 50)
