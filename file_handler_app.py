@@ -78,3 +78,39 @@ class FileHandlerApp:
             The user's menu choice as a string.
         """
         return input("Enter your choice: ").strip()
+        
+    def _execute_handler(self, handler: FileHandler) -> None:
+        """Execute a file handler's process and display methods.
+
+        Args:
+            handler: An instance of a FileHandler subclass.
+        """
+        try:
+            handler.process()
+            handler.display_result()
+        except Exception as error:
+            print(f"\nAn error occurred: {error}\n")
+
+    def _run_activity(
+        self,
+        title: str,
+        description: str,
+        handler_factory: Callable[[], FileHandler]
+    ) -> None:
+        """Generic runner for file handling activities.
+
+        Args:
+            title: Title of the activity.
+            description: Brief description of source/output.
+            handler_factory: Function that returns a FileHandler instance.
+        """
+        print(f"\n>>> Running: {title}")
+        print(f"    {description}\n")
+
+        try:
+            handler = handler_factory()
+            self._execute_handler(handler)
+        except Exception as error:
+            print(f"\nFailed to initialize or run activity: {error}\n")
+
+        input("Press Enter to return to the menu...")
