@@ -1,18 +1,26 @@
 # Activity 5 - File Handling with Python (OOP Edition)
 
-CMPE 103 - Module 2: File Handling in Python implemented with Object-Oriented Programming principles.
+**CMPE 103 - Module 2: File Handling in Python** implemented using **Object-Oriented Programming (OOP)**.
 
-## Project Overview
+---
 
-This project implements four programming exercises using:
-- **OOP Design**: Classes, inheritance, encapsulation, and abstraction
-- **Coding Standard**: Descriptive snake_case for files/variables/methods, PascalCase for classes, PEP-8 compliant
-- **Interactive Menu**: Clean console interface to run all exercises
-- **Error Handling**: Graceful handling of file and input errors
+## What this project does
+This repository provides an interactive, menu-driven Python application that demonstrates file handling concepts using an OOP design.
 
-## Architecture
+It includes **four activities (P-1 to P-4)**, each implemented as a dedicated class built on a shared abstract base.
 
-```
+---
+
+## Key Concepts Used
+- **OOP Design**: classes, inheritance, encapsulation, abstraction
+- **Clean console UI**: a menu to run each activity
+- **Robust error handling**: handles common file/input failures gracefully
+- **Consistent naming & style**: snake_case for functions/variables, PascalCase for classes, PEP-8 friendly formatting
+
+---
+
+## Architecture (High-level)
+```text
 FileHandler (ABC)
 ├── NumberSeparator      (P-1: Even/Odd separation)
 ├── StudentGwaAnalyzer   (P-2: Top student by GWA)
@@ -23,43 +31,95 @@ FileHandlerApp (Menu System)
 └── main.py (Entry Point)
 ```
 
+---
+
 ## Quick Start
+Run the application from the project root:
 
 ```bash
 python main.py
 ```
 
-Select an option from the menu:
-- `[1]` Separate Even & Odd Numbers
-- `[2]` Find Top Student by GWA
-- `[3]` Interactive Life Writer
-- `[4]` Square Evens & Cube Odds
+Then choose an option from the menu:
+- `[1]` Separate Even & Odd Numbers (P-1)
+- `[2]` Find Top Student by GWA (P-2)
+- `[3]` Interactive Life Writer (P-3)
+- `[4]` Square Evens & Cube Odds (P-4)
 - `[5]` About
 - `[0]` Exit
 
+---
+
+## Activities Details
+
+### P-1 — Number Separator
+**Input:** `numbers.txt`
+
+**Output:**
+- `even.txt` (even numbers)
+- `odd.txt` (odd numbers)
+
+
+---
+
+### P-2 — Student GWA Analyzer
+**Input:** `students_gwa.txt`
+
+**Output:** The program displays the student with the **highest GWA**.
+
+---
+
+### P-3 — Life Writer
+**Input:** Interactive user text (entered via the console)
+
+**Output:**
+- `mylife.txt`
+
+The program repeatedly prompts you for lines until you stop, then writes all collected lines to `mylife.txt`.
+
+---
+
+### P-4 — Integer Transformer
+**Input:** `integers.txt`
+
+**Outputs:**
+- `double.txt` (squares of even numbers)
+- `triple.txt` (cubes of odd numbers)
+
+
+---
+
 ## File Structure
-
-| File | Description |
+| Path | Description |
 |------|-------------|
-| `file_handler_base.py` | Abstract base class with common I/O operations |
-| `number_separator.py` | P-1: Separates integers into even.txt and odd.txt |
-| `student_gwa_analyzer.py` | P-2: Finds student with highest GWA |
-| `life_writer.py` | P-3: Interactively writes lines to mylife.txt |
-| `integer_transformer.py` | P-4: Computes squares (evens) and cubes (odds) |
-| `file_handler_app.py` | Interactive menu system |
 | `main.py` | Application entry point |
-| `numbers.txt` | Sample data for P-1 (20 integers) |
-| `students_gwa.txt` | Sample data for P-2 (20 student records) |
-| `integers.txt` | Sample data for P-4 (20 integers) |
+| `file_handler_app.py` | Menu system that runs activities |
+| `file_handlers/file_handler_base.py` | Abstract base class with shared I/O helpers |
+| `file_handlers/number_separator.py` | Implements P-1 |
+| `file_handlers/student_gwa_analyzer.py` | Implements P-2 |
+| `file_handlers/life_writer.py` | Implements P-3 |
+| `file_handlers/integer_transformer.py` | Implements P-4 |
+| `sample_data/` | Provided sample input files |
 
-## Sample Output Files
+> Note: Output files are written to the project’s working directory by default (e.g., `even.txt`, `odd.txt`, `mylife.txt`, `double.txt`, `triple.txt`).
 
+---
+
+## Sample Data
+The repository includes sample inputs under:
+- `sample_data/integers.txt`
+- `sample_data/numbers.txt`
+- `sample_data/students_gwa.txt`
+
+---
+
+## Outputs Summary
 Running the exercises generates:
-- `even.txt` / `odd.txt` — from NumberSeparator
-- `mylife.txt` — from LifeWriter
-- `double.txt` / `triple.txt` — from IntegerTransformer
+- `even.txt` / `odd.txt` (P-1)
+- `mylife.txt` (P-3)
+- `double.txt` / `triple.txt` (P-4)
+
+---
 
 ## Commit History
-
-This repository was built incrementally with 40+ commits showing the progression from repository setup → data preparation → base class → individual problems → menu integration → documentation.
-
+This repository was built incrementally with 40+ commits, progressing from setup → data preparation → base class → individual problems → menu integration → documentation.
