@@ -8,11 +8,11 @@ import os
 import sys
 from typing import Dict, Callable
 
-from file_handler_base import FileHandler
-from number_separator import NumberSeparator
-from student_gwa_analyzer import StudentGwaAnalyzer
-from life_writer import LifeWriter
-from integer_transformer import IntegerTransformer
+from file_handlers.file_handler_base import FileHandler
+from file_handlers.number_separator import NumberSeparator
+from file_handlers.student_gwa_analyzer import StudentGwaAnalyzer
+from file_handlers.life_writer import LifeWriter
+from file_handlers.integer_transformer import IntegerTransformer
 
 class FileHandlerApp:
     """Main application class for the File Handler Menu System.
@@ -191,13 +191,3 @@ class FileHandlerApp:
                 action()
             else:
                 self._handle_invalid_choice()
-
-
-def main() -> None:
-    """Application entry point."""
-    app = FileHandlerApp()
-    app.run()
-
-
-if __name__ == "__main__":
-    main()
